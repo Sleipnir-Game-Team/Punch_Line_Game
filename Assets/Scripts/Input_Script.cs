@@ -5,36 +5,51 @@ using UnityEngine;
 public class Input_Script : MonoBehaviour
 {   
     private string word;
-    private char character;
+    private bool isTyping;
 
     // Start is called before the first frame update
     void Start()
     {
-        word = null;
+        isTyping = false;
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    { 
+        if(isTyping == false)
+        {
+            if(Input.GetKeyDown("space"))
+            {
+                isTyping = true;
+            }
+        } else {
+            TypingListen();
+        }
+    }
+    void TypingListen()
+    {
         foreach (char c in Input.inputString)
         {
             if (c == '\b') 
             {
-                return;
+                if (word.Length != 0)
+                {
+                    word = word.Substring(0, word.Length - 1);
+                }
             }
             else if ((c == '\n') || (c == '\r'))
             {
+                print("Escreveu: " + word);
+                word = "";
+                isTyping = false;
                 return;
             }
-            else if (char.IsLetter(c))
+            else
             {
-                character = c;
-                print(character);
+                word += c;
+                print(word);
             }
         }
     }
-    void GetCharacter()
-    {
-        return;
-    }
 }
+
