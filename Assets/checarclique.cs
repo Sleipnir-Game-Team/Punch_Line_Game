@@ -23,22 +23,25 @@ public class checarclique : NetworkBehaviour
     }
 private void Update()
 {
+    
     if (Input.GetKeyDown(KeyCode.Space))
     {
-       printaServer(gameObject);
+        print("apertou "+nome);
+        printaServer(gameObject);
     }
 }
 
 [ServerRpc]
 public void printaServer(GameObject player)
 {
+    print("a" + player.GetComponent<checarclique>().GetNome());
     printa(player);
 }
 
 [ObserversRpc]
 public void printa(GameObject player)
 {
-    print(player.GetComponent<checarclique>().GetNome());
+    print("b" + player.GetComponent<checarclique>().GetNome());
 }
 
 public string GetNome()
