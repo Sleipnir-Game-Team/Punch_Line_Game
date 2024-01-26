@@ -4,17 +4,21 @@ using UnityEngine;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Demo.AdditiveScenes;
+using FishNet.Managing;
 
 public class checarclique : NetworkBehaviour
 {
     [SerializeField] private string nome;
+    [SerializeField] GameObject InputManager;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
         if (base.IsOwner)
         {
-
+            // GameObject manager = Instantiate(InputManager);
+            // NetworkManager networkManager = FindObjectOfType<NetworkManager>();
+            // networkManager.ServerManager.Spawn(manager);
         }
         else
         {
@@ -24,11 +28,11 @@ public class checarclique : NetworkBehaviour
 private void Update()
 {
     
-    if (Input.GetKeyDown(KeyCode.Space))
-    {
-        print("apertou "+nome);
-        printaServer(gameObject);
-    }
+    // if (Input.GetKeyDown(KeyCode.Space))
+    // {
+    //     print("apertou "+nome);
+    //     printaServer(gameObject);
+    // }
 }
 
 [ServerRpc]
