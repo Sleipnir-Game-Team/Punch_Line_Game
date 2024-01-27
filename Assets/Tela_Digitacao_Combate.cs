@@ -6,7 +6,7 @@ public class Tela_Digitacao_Combate : MonoBehaviour
 {
     [SerializeField] private string NextScene;
     [SerializeField] private string LastScene;
-    [SerializeField] private GameObject ButtonEndFight;
+    [SerializeField] private string MenuScene;
     
     public void PlayButton(){
         Debug.Log("YOU GOT PUNCH FUCKING LINEDDDDD\nlive with it");
@@ -14,15 +14,20 @@ public class Tela_Digitacao_Combate : MonoBehaviour
     }
 
     public void BackButton(){
+        Debug.Log("Vc perdeu O JOGO, volte 1 casa");
+        VoltarCena(LastScene);
+    }
+
+    public void BackToMenuButton(){
         Debug.Log("Voltando p Menu");
-        VoltarCena();
+        VoltarCena(MenuScene);
     }
 
     public void PassarCena(){
         Scene_Manager.GetInstance().LoadScene(NextScene);
     }
 
-    public void VoltarCena(){
-        Scene_Manager.GetInstance().LoadScene(LastScene);
+    public void VoltarCena(string scene){
+        Scene_Manager.GetInstance().LoadScene(scene);
     }
 }

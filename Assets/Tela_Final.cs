@@ -6,7 +6,6 @@ public class Tela_Final : MonoBehaviour
 {
     [SerializeField] private string NextScene;
     [SerializeField] private string LastScene;
-    [SerializeField] private GameObject ButtonBackToMenu;
     
     public void PlayButton(){
         Debug.Log("Finalizamo, volta p menu ae, bobão");
@@ -14,15 +13,15 @@ public class Tela_Final : MonoBehaviour
     }
 
     public void BackButton(){
-        Debug.Log("Voltando p Menu");
-        VoltarCena();
+        Debug.Log("REEEEEEEEVANCHE NELES SENHORAS E SENHORES");
+        VoltarCena(LastScene);
     }
 
     public void PassarCena(){
         Scene_Manager.GetInstance().LoadScene(NextScene);
     }
 
-    public void VoltarCena(){
-        Scene_Manager.GetInstance().LoadScene(LastScene);
+    public void VoltarCena(string scene){
+        Scene_Manager.GetInstance().LoadScene(scene);
     }
 }

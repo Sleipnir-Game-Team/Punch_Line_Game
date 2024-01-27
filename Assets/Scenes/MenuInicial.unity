@@ -536,7 +536,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 364350689}
         m_TargetAssemblyTypeName: Menu_Inicial, Assembly-CSharp
-        m_MethodName: PlayButton
+        m_MethodName: QuitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

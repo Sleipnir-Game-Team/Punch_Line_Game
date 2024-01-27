@@ -6,7 +6,6 @@ public class Tela_Inicial_Combate : MonoBehaviour
 {
     [SerializeField] private string NextScene;
     [SerializeField] private string ReturnScene;
-    [SerializeField] private GameObject ButtonStartFight;
     
     public void PlayButton(){
         Debug.Log("FAITO");
