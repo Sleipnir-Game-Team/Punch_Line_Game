@@ -35,10 +35,12 @@ public class Input_Script : MonoBehaviour
                 if (word.Length != 0)
                 {
                     word = word.Substring(0, word.Length - 1);
+                    print(word);
                 }
             }
             else if ((c == '\n') || (c == '\r'))
             {
+                word = word.ToLower();
                 print("Escreveu: " + word);
                 word = "";
                 isTyping = false;
