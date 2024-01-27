@@ -44,32 +44,40 @@ public class CharacterManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             WinningLeft();
-            LosingRight();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             WinLeft();
-            LoseRight();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             WinnerLeft();
-            LoserRight();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             WinningRight();
-            LosingLeft();
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             WinRight();
-            LoseLeft();
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             WinnerRight();
-            LoserLeft();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            float spmte = playerEsq.GetComponentsInChildren<Animator>()[1].GetFloat("speedMt");
+            float spmtd = playerDir.GetComponentsInChildren<Animator>()[1].GetFloat("speedMt");
+            playerEsq.GetComponentsInChildren<Animator>()[1].SetFloat("speedMt", spmte*2f);
+            playerDir.GetComponentsInChildren<Animator>()[1].SetFloat("speedMt", spmtd*0.5f);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            float spmte = playerEsq.GetComponentsInChildren<Animator>()[1].GetFloat("speedMt");
+            float spmtd = playerDir.GetComponentsInChildren<Animator>()[1].GetFloat("speedMt");
+            playerEsq.GetComponentsInChildren<Animator>()[1].SetFloat("speedMt", spmte*0.5f);
+            playerDir.GetComponentsInChildren<Animator>()[1].SetFloat("speedMt", spmtd*2f);
         }
     }
 
@@ -83,54 +91,83 @@ public class CharacterManager : MonoBehaviour
         persDireita = Instantiate(persDireitaPrefab, spawnDireita, Quaternion.identity);
         playerDir = persDireita.GetComponent<Player>();
         playerDir.LoadPose("Carregando");
-        playerDir.GetComponentInChildren<SpriteRenderer>().flipX = true;
     }
 
     public void WinningLeft(){
         playerEsq.LoadPose("Forte");
+        playerEsq.GetComponent<Animator>().SetInteger("Status", 1);
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 1);
+
+
+        playerDir.LoadPose("Fraco");
+        playerDir.GetComponent<Animator>().SetInteger("Status", 3);
+        playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 1);
     }
 
     public void WinningRight(){
         playerDir.LoadPose("Forte");
+        playerDir.GetComponent<Animator>().SetInteger("Status", 1);
+        playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 1);
+
+        
+        playerEsq.LoadPose("Fraco");
+        playerEsq.GetComponent<Animator>().SetInteger("Status", 3);
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 1);
     }
 
     public void WinLeft(){
         playerEsq.LoadPose("Soco");
+        playerEsq.GetComponent<Animator>().SetInteger("Status", 2);
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+
+        
+        playerDir.LoadPose("Socado");
+        playerDir.GetComponent<Animator>().SetInteger("Status", 4);
     }
 
     public void WinRight(){
         playerDir.LoadPose("Soco");
+        playerDir.GetComponent<Animator>().SetInteger("Status", 2);
+        playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+
+        
+        playerEsq.LoadPose("Socado");
+        playerEsq.GetComponent<Animator>().SetInteger("Status", 4);
+        
     }
     
     public void WinnerLeft(){
         playerEsq.LoadPose("Win");
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetFloat("speedMt", 10);
+
+        playerDir.LoadPose("Lose");
+        playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 1);
+        playerDir.GetComponent<Animator>().SetInteger("Status", 5);
     }
 
     public void WinnerRight(){
         playerDir.LoadPose("Win");
-    }
+        playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+        playerDir.GetComponentsInChildren<Animator>()[1].SetFloat("speedMt", 10);
 
-    public void LosingLeft(){
-        playerEsq.LoadPose("Fraco");
-    }
-
-    public void LosingRight(){
-        playerDir.LoadPose("Fraco");
-    }
-
-    public void LoseLeft(){
-        playerEsq.LoadPose("Socado");
-    }
-
-    public void LoseRight(){
-        playerDir.LoadPose("Socado");
-    }
-    
-    public void LoserLeft(){
         playerEsq.LoadPose("Lose");
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 1);
+        playerEsq.GetComponent<Animator>().SetInteger("Status", 5);
     }
 
-    public void LoserRight(){
-        playerDir.LoadPose("Lose");
+    public void Recover(){
+        playerEsq.LoadPose("Carregando");
+        playerDir.LoadPose("Carregando");
+
+        playerEsq.GetComponent<Animator>().SetInteger("Status", 0);
+        playerEsq.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+
+        playerDir.GetComponent<Animator>().SetInteger("Status", 0);
+        playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+    }
+
+    public static CharacterManager GetInstance(){
+        return instance;
     }
 }

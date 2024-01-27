@@ -29,4 +29,16 @@ public class Player : MonoBehaviour
         gameObject.GetComponentInChildren<SpriteRenderer>().sprite = novaPose;
     }
 
+    public void LEFT_PUNCH(){
+        CharacterManager.GetInstance().WinLeft();
+    }
+
+    public void RIGHT_PUNCH(){
+        CharacterManager.GetInstance().WinRight();
+    }
+
+    public void STAND_UP(){
+        CharacterManager.GetInstance().Recover();
+    }
+
 }
