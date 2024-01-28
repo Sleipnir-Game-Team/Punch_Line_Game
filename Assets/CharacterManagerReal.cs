@@ -107,7 +107,7 @@ public class CharacterManagerReal : MonoBehaviour
             playerEsq = persEsquerda.GetComponent<Player>();
             //persEsquerda.transform.position = spawnEsquerda;
 
-            persDireita = Instantiate(persDireitaPrefab, spawnDireita, Quaternion.identity);
+            persDireita = Instantiate(persDireitaPrefab);
             InstanceFinder.ServerManager.Spawn(persDireita,ConnectionManagerReal.GetInstance().GetConnection(1));
             playerDir = persDireita.GetComponent<Player>();
             //persDireita.transform.position = spawnDireita;
