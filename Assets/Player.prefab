@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3656752857312235399}
   - component: {fileID: -8358967237202933725}
   - component: {fileID: -3053195426723813059}
+  - component: {fileID: -2653590288625940253}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -62,7 +63,7 @@ MonoBehaviour:
   _initializeOrder: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 10
+  <PrefabId>k__BackingField: 11
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
@@ -99,3 +100,15 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 3656752857312235399}
   nome: Joao Punchline
   InputManager: {fileID: 846256102661170742, guid: 8407802ee2ca2174592f62cf10ecbedb, type: 3}
+--- !u!114 &-2653590288625940253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367107655149051878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee87bb8032045641980e2ee5c592a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
