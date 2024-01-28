@@ -108,14 +108,14 @@ public class Player : NetworkBehaviour
 
     [ObserversRpc]
     public void RecoverServer(GameObject pers, Vector3 spawn){
-        print(spawn);
+        print("a "+spawn);
         print(InstanceFinder.IsClient);
         RecoverClient(pers, spawn);
     }
 
     [ServerRpc]
     public void RecoverClient(GameObject pers, Vector3 spawn){
-        print(spawn);
+        print("b "+spawn);
         pers.transform.position = spawn;
         pers.GetComponent<Player>().LoadPose("Carregando");
 
