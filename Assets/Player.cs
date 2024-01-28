@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
-    [SerializeField] private string pose;
-    [SerializeField] private string character;
+    [SyncVar] [SerializeField] private string pose;
+    [SyncVar] [SerializeField] private string character;
 
     public string GetPose(){
         return pose;
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
         this.character = character;
     }
 
+    [ServerRpc]
     public void LoadPose(string pose){
         this.pose = pose;
         Sprite novaPose  = Resources.Load<Sprite>("SpriteTeste/"+pose+"-"+character);

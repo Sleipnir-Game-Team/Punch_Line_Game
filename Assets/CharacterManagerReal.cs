@@ -96,7 +96,8 @@ public class CharacterManagerReal : MonoBehaviour
             persDireita = Instantiate(persDireitaPrefab, spawnDireita, Quaternion.identity);
             playerDir = persDireita.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persDireita,ConnectionManagerReal.GetInstance().GetConnection(1));
-        Recover();
+            
+            Recover();
         } else if(InstanceFinder.ServerManager.Clients.Keys.Count < 2){
             print("Algum cliente não está conectado");
         } else {
