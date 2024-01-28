@@ -86,6 +86,11 @@ public class Player : NetworkBehaviour
         GetComponent<Animator>().SetInteger("Status", 5);
     }
 
+    [ServerRpc]
+    public void RecoverServer(GameObject pers, Vector3 spawn){
+        Recover(pers, spawn);
+    }
+
     [ObserversRpc]
     public void Recover(GameObject pers, Vector3 spawn){
         print(spawn);
