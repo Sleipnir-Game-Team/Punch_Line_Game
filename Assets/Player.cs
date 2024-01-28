@@ -25,7 +25,7 @@ public class Player : NetworkBehaviour
         this.character = character;
     }
 
-    [ServerRpc]
+    [ObserversRpc]
     public void LoadPose(string pose){
         this.pose = pose;
         Sprite novaPose  = Resources.Load<Sprite>("SpriteTeste/"+pose+"-"+character);
