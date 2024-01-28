@@ -14,9 +14,6 @@ public class Input_Script_Teste2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        caixaTexto = Instantiate(caixaTextoPrefab);
-        InstanceFinder.ServerManager.Spawn(caixaTexto.gameObject);
-        isTyping = false;
     }
 
     // Update is called once per frame
@@ -32,6 +29,13 @@ public class Input_Script_Teste2 : MonoBehaviour
             TypingListen();
         }
     }
+
+    public void SpawnBox(){
+        caixaTexto = Instantiate(caixaTextoPrefab);
+        InstanceFinder.ServerManager.Spawn(caixaTexto.gameObject);
+        isTyping = false;
+    }
+
     void TypingListen()
     {
         foreach (char c in Input.inputString)

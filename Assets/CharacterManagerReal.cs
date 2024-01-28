@@ -106,6 +106,7 @@ public class CharacterManagerReal : MonoBehaviour
             persEsquerda = Instantiate(persEsquerdaPrefab);
             InstanceFinder.ServerManager.Spawn(persEsquerda,ConnectionManagerReal.GetInstance().GetConnection(0));
             playerEsq = persEsquerda.GetComponent<Player>();
+            persEsquerda.GetComponent<Input_Script_Teste2>().SpawnBox();
             //persEsquerda.transform.position = spawnEsquerda;
 
             persDireita = Instantiate(persDireitaPrefab);
