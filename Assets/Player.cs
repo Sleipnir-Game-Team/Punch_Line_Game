@@ -117,6 +117,7 @@ public class Player : NetworkBehaviour
     public void RecoverClient(GameObject pers, Vector3 spawn){
         print("b "+spawn);
         pers.transform.position = spawn;
+        print("c "+pers.transform.position);
         pers.GetComponent<Player>().LoadPose("Carregando");
 
         pers.GetComponent<Animator>().SetInteger("Status", 0);
