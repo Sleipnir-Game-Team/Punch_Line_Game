@@ -87,13 +87,13 @@ public class Player : NetworkBehaviour
     }
 
     [ObserversRpc]
-    public void Recover(Vector3 spawn){
+    public void Recover(GameObject pers, Vector3 spawn){
         print(spawn);
-        transform.position = spawn;
-        LoadPose("Carregando");
+        pers.transform.position = spawn;
+        pers.GetComponent<Player>().LoadPose("Carregando");
 
-        GetComponent<Animator>().SetInteger("Status", 0);
-        GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
+        pers.GetComponent<Animator>().SetInteger("Status", 0);
+        pers.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
     }
 
 }
