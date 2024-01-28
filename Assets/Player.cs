@@ -10,13 +10,13 @@ public class Player : NetworkBehaviour
     [SyncVar] [SerializeField] private string pose;
     [SyncVar] [SerializeField] private string character;
 
-    public override void OnStartClient()
+    /*public override void OnStartClient()
     {
         base.OnStartClient();
         if(!base.IsOwner){
             GetComponent<Player>().enabled = false;
         }
-    }
+    }*/
 
     private void Update()
     {
@@ -102,14 +102,14 @@ public class Player : NetworkBehaviour
         RecoverServer(pers, spawn);
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [ObserversRpc]
     public void RecoverServer(NetworkObject pers, Vector3 spawn){
         print("a "+spawn);
         print(pers.OwnerId);
         RecoverClient(pers, spawn);
     }
 
-    [ObserversRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void RecoverClient(NetworkObject pers, Vector3 spawn){
         print("b "+spawn);
         pers.transform.position = spawn;
