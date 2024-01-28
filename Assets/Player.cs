@@ -4,22 +4,40 @@ using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : NetworkBehaviour
 {
     [SyncVar] [SerializeField] private string pose;
     [SyncVar] [SerializeField] private string character;
 
-    /*public override void OnStartClient()
+    public int life{
+        get;
+
+        [ServerRpc]
+        private set;
+    }
+
+    public override void OnStartClient()
     {
         base.OnStartClient();
         if(!base.IsOwner){
-            GetComponent<Player>().enabled = false;
+            return;
         }
-    }*/
+
+    }
 
     private void Update()
     {
+        if(IsOwner){
+            return;
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            life -= 1;
+            print(life);
+        }
     }
     public string GetPose(){
         return pose;
