@@ -337,9 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e76f0ba1dd31944a9db310ead818dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persEsquerdaPrefab: {fileID: 3991847105149935575, guid: fbb724e7a89b80a40a861193940cd7bf, type: 3}
+  persEsquerdaPrefab: {fileID: -7453425648405162759, guid: fbb724e7a89b80a40a861193940cd7bf, type: 3}
   spawnEsquerda: {x: -1, y: 0, z: 0}
-  persDireitaPrefab: {fileID: 3851759880247495911, guid: 75798a6236ef93941a6e1f9d154c36f9, type: 3}
+  persDireitaPrefab: {fileID: -1935820795592910433, guid: 75798a6236ef93941a6e1f9d154c36f9, type: 3}
   spawnDireita: {x: 1, y: 0, z: 0}
   sprites: []
 --- !u!1 &602878665
