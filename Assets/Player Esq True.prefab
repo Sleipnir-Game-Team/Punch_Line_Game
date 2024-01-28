@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35bcbb4167f9b114386a1e7c4fc945de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: -7453425648405162759}
+  _networkObjectCache: {fileID: -7453425648405162759}
   pose: Carregando
   character: Joao
 --- !u!95 &-2145826493800646848
@@ -195,6 +198,7 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   _networkBehaviours:
+  - {fileID: 7694590085083043110}
   - {fileID: 4132062266470961742}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -239,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 0
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: -7453425648405162759}
   _networkObjectCache: {fileID: -7453425648405162759}
   _componentConfiguration: 0
@@ -259,9 +263,9 @@ MonoBehaviour:
   _interval: 1
   _synchronizePosition: 1
   _positionSnapping:
-    X: 0
-    Y: 0
-    Z: 0
+    X: 1
+    Y: 1
+    Z: 1
   _synchronizeRotation: 1
   _rotationSnapping:
     X: 0
