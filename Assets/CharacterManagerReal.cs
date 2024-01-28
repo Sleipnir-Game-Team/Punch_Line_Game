@@ -124,6 +124,16 @@ public class CharacterManagerReal : MonoBehaviour
 
     }
 
+    public NetworkObject GetCharacter(int id){
+        if(id == 0){
+            return persEsquerda;
+        }else if(id == 1){
+            return persDireita;
+        } else {
+            return null;
+        }
+    }
+
     /*
     public void WinningLeft(){
         playerEsq.LoadPose("Forte");
