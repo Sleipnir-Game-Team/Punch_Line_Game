@@ -9,6 +9,21 @@ public class Player : NetworkBehaviour
     [SyncVar] [SerializeField] private string pose;
     [SyncVar] [SerializeField] private string character;
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if(!base.IsOwner){
+            GetComponent<Player>().enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Recover(gameObject,Vector3.zero);
+        }
+    }
     public string GetPose(){
         return pose;
     }
@@ -104,5 +119,7 @@ public class Player : NetworkBehaviour
         pers.GetComponent<Animator>().SetInteger("Status", 0);
         pers.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
     }
+
+
 
 }
