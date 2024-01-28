@@ -108,7 +108,7 @@ public class Player : NetworkBehaviour
 
     [ObserversRpc]
     public void RecoverServer(GameObject pers, Vector3 spawn){
-        print(InstanceFinder.ClientManager.Connection.ClientId);
+        print(spawn);
         print(InstanceFinder.IsClient);
         RecoverClient(pers, spawn);
     }

@@ -338,9 +338,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persEsquerdaPrefab: {fileID: 3991847105149935575, guid: fbb724e7a89b80a40a861193940cd7bf, type: 3}
-  spawnEsquerda: {x: 0, y: 0, z: 0}
+  spawnEsquerda: {x: -1, y: 0, z: 0}
   persDireitaPrefab: {fileID: 3851759880247495911, guid: 75798a6236ef93941a6e1f9d154c36f9, type: 3}
-  spawnDireita: {x: 0, y: 0, z: 0}
+  spawnDireita: {x: 1, y: 0, z: 0}
   sprites: []
 --- !u!1 &602878665
 GameObject:
