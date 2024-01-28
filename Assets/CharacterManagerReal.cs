@@ -89,14 +89,17 @@ public class CharacterManagerReal : MonoBehaviour
     public void SpawnCharacters(){
         
         if(InstanceFinder.ServerManager.Clients.Keys.Count == 2){
-            persEsquerda = Instantiate(persEsquerdaPrefab, spawnEsquerda, Quaternion.identity);
+            persEsquerda = Instantiate(persEsquerdaPrefab);
             playerEsq = persEsquerda.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persEsquerda,ConnectionManagerReal.GetInstance().GetConnection(0));
+            persEsquerda.transform.position = spawnEsquerda;
 
             persDireita = Instantiate(persDireitaPrefab, spawnDireita, Quaternion.identity);
             playerDir = persDireita.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persDireita,ConnectionManagerReal.GetInstance().GetConnection(1));
-        Recover();
+            persDireita.transform.position = spawnDireita;
+            
+            Recover();
         } else if(InstanceFinder.ServerManager.Clients.Keys.Count < 2){
             print("Algum cliente não está conectado");
         } else {
