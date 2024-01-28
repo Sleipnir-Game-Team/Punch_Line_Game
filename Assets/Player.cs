@@ -102,14 +102,14 @@ public class Player : NetworkBehaviour
         RecoverServer(pers, spawn);
     }
 
-    //[ObserversRpc]
+    [ObserversRpc]
     public void RecoverServer(NetworkObject pers, Vector3 spawn){
         print("a "+spawn);
         print(pers.OwnerId);
         RecoverClient(pers, spawn);
     }
 
-    //[ServerRpc]
+    [ServerRpc]
     public void RecoverClient(NetworkObject pers, Vector3 spawn){
         print("b "+spawn);
         pers.transform.position = spawn;
