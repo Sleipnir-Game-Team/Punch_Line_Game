@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
@@ -107,6 +108,8 @@ public class Player : NetworkBehaviour
 
     [ObserversRpc]
     public void RecoverServer(GameObject pers, Vector3 spawn){
+        print(InstanceFinder.ClientManager.Connection.ClientId);
+        print(InstanceFinder.IsClient);
         RecoverClient(pers, spawn);
     }
 
