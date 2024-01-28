@@ -263,9 +263,9 @@ MonoBehaviour:
   _interval: 1
   _synchronizePosition: 1
   _positionSnapping:
-    X: 1
-    Y: 1
-    Z: 1
+    X: 0
+    Y: 0
+    Z: 0
   _synchronizeRotation: 1
   _rotationSnapping:
     X: 0
