@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using FishNet;
+using FishNet.Object;
 using UnityEngine;
 
 public class CharacterManagerReal : MonoBehaviour
 {
     private static CharacterManagerReal instance;
 
-    [SerializeField] private GameObject persEsquerdaPrefab;
-    private GameObject persEsquerda;
+    [SerializeField] private NetworkObject persEsquerdaPrefab;
+    private NetworkObject persEsquerda;
     [SerializeField] private Vector3 spawnEsquerda;
     private Player playerEsq;
 
-    [SerializeField] private GameObject persDireitaPrefab;
-    private GameObject persDireita;
+    [SerializeField] private NetworkObject persDireitaPrefab;
+    private NetworkObject persDireita;
     [SerializeField] private Vector3 spawnDireita;
     private Player playerDir;
 

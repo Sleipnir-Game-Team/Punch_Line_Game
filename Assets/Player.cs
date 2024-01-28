@@ -20,10 +20,6 @@ public class Player : NetworkBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Recover(gameObject,Vector3.zero);
-        }
     }
     public string GetPose(){
         return pose;
@@ -102,19 +98,19 @@ public class Player : NetworkBehaviour
         GetComponent<Animator>().SetInteger("Status", 5);
     }
 
-    public void Recover(GameObject pers, Vector3 spawn){
+    public void Recover(NetworkObject pers, Vector3 spawn){
         RecoverServer(pers, spawn);
     }
 
-    [ServerRpc]
-    public void RecoverServer(GameObject pers, Vector3 spawn){
+    [ObserversRpc]
+    public void RecoverServer(NetworkObject pers, Vector3 spawn){
         print("a "+spawn);
-        print(InstanceFinder.IsClient);
+        print(pers.OwnerId);
         RecoverClient(pers, spawn);
     }
 
-    [ObserversRpc]
-    public void RecoverClient(GameObject pers, Vector3 spawn){
+    [ServerRpc]
+    public void RecoverClient(NetworkObject pers, Vector3 spawn){
         print("b "+spawn);
         pers.transform.position = spawn;
         print("c "+pers.transform.position);
