@@ -109,7 +109,7 @@ public class Player : NetworkBehaviour
         RecoverClient(pers, spawn);
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     public void RecoverClient(NetworkObject pers, Vector3 spawn){
         print("b "+spawn);
         pers.transform.position = spawn;
