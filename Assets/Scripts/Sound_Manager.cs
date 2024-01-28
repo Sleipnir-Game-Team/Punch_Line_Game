@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ReadSpeaker;
 
 public class Sound_Manager : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class Sound_Manager : MonoBehaviour
     private List<(AudioClip,bool)> musics;
     private AudioSource music_source;
     private List<AudioSource> removed;
-    // Start is called before the first frame update
+    private TTSSpeaker speaker;
+    private Queue<string> words;
     void Awake()
     {
         if(instance == null){
@@ -21,19 +23,50 @@ public class Sound_Manager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        TTS.Init();
         Audios = new List<AudioSource>();
         sounds = new Queue<List<(AudioClip,bool)>>();
         music_source = gameObject.GetComponent<AudioSource>();
         removed = new List<AudioSource>();
+        speaker = gameObject.GetComponent<TTSSpeaker>();
+        words = new Queue<string>();
+
+        WordQueue("Soco");
+        WordQueue("Grande");
+        WordQueue("Rápido");
+        WordQueue("Gigante");
     }
 
     void Update()
     {
         VerifieAudio();
         VerifieQueue();
+        VerifieWords();
     }
 
-    void LoadMusic(string type, string name, bool loop)
+    public void WordQueue(string word)
+    {
+        words.Enqueue(word);
+    } 
+
+    public void WordsQueueClean()
+    {
+        words.Clear();
+    }
+
+    void VerifieWords()
+    {
+        if (speaker.audioSource.isPlaying == false)
+        {   
+            if (words.Count > 0)
+            {
+                var wordDequeue = words.Dequeue();
+                TTS.Say(wordDequeue, speaker);
+            }
+        }
+    }
+
+    public void LoadMusic(string type, string name, bool loop)
     {    
         musics = new List<(AudioClip,bool)>();
         AudioClip music = Resources.Load<AudioClip>("Música-Sons/" + type + "/" + name);
@@ -41,7 +74,7 @@ public class Sound_Manager : MonoBehaviour
         sounds.Enqueue(musics);
     }
 
-    void LoadSound(string type, string name)
+    public void LoadSound(string type, string name)
     {   
         AudioSource Audio = gameObject.AddComponent<AudioSource>();
         Audios.Add(Audio);
@@ -78,6 +111,7 @@ public class Sound_Manager : MonoBehaviour
     void VerifieQueue()
     {
         if (music_source.isPlaying == false)
+        {   
             if (sounds.Count > 0)
             {
                 var musicList = sounds.Dequeue();
@@ -87,9 +121,10 @@ public class Sound_Manager : MonoBehaviour
                 music_source.loop = musicList[0].Item2;
                 music_source.Play();
             }
+        }
     }
 
-    void CleanQueue()
+    public void CleanQueue()
     {
         sounds.Clear();
     }

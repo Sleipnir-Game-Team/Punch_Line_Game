@@ -69,8 +69,10 @@ public class ConnectionManagerReal : MonoBehaviour
     public void OnConnectedClient(NetworkConnection networkConnection, RemoteConnectionStateArgs args){
         if(networkConnection.ClientId.Equals(0)){
             networkConnectionEsq = networkConnection;
+            print(networkConnectionEsq);
         }else if(networkConnection.ClientId.Equals(1)){
             networkConnectionDir = networkConnection;
+            print(networkConnectionDir);
         }
     }
 
