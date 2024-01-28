@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -44,18 +45,23 @@ public class WordManager : MonoBehaviour
 
     public int CheckWord(string word){
         bool existe = words.TryGetValue(word, out int resposta);
-        if(palavrasUsadas.Contains(word)){
+        palavrasUsadas.Add(word);
+        if(existe){
+            if(palavrasUsadas.Contains(word)){
                 print("Ja foi parça");
                 return -1;
-        }else{
-            palavrasUsadas.Add(word);
-            if(existe){
-                return resposta;
             }else{
-                return -1;
+                return resposta;
             }
+        }else{
+            return -1;
         }
         
+        
+    }
+
+    public List<String> GetPalavras(){
+        return palavrasUsadas;
     }
 
     public static WordManager GetInstance(){
