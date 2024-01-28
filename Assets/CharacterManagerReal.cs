@@ -103,13 +103,13 @@ public class CharacterManagerReal : MonoBehaviour
         
         if(InstanceFinder.ServerManager.Clients.Keys.Count == 2){
             persEsquerda = Instantiate(persEsquerdaPrefab);
-            playerEsq = persEsquerda.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persEsquerda,ConnectionManagerReal.GetInstance().GetConnection(0));
+            playerEsq = persEsquerda.GetComponent<Player>();
             //persEsquerda.transform.position = spawnEsquerda;
 
             persDireita = Instantiate(persDireitaPrefab, spawnDireita, Quaternion.identity);
-            playerDir = persDireita.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persDireita,ConnectionManagerReal.GetInstance().GetConnection(1));
+            playerDir = persDireita.GetComponent<Player>();
             //persDireita.transform.position = spawnDireita;
             
             playerEsq.Recover(persEsquerda, spawnEsquerda);
