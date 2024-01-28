@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +15,7 @@ public class Input_Script_Teste2 : MonoBehaviour
     void Start()
     {
         caixaTexto = Instantiate(caixaTextoPrefab);
+        InstanceFinder.ServerManager.Spawn(caixaTexto.gameObject);
         isTyping = false;
     }
 
