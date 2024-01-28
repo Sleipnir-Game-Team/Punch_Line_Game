@@ -44,27 +44,39 @@ public class CharacterManagerReal : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            WinningLeft();
+            //WinningLeft();
+            playerEsq.Winning();
+            playerDir.Losing();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            WinLeft();
+            //WinLeft();
+            playerEsq.Win();
+            playerDir.Lose();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            WinnerLeft();
+            //WinnerLeft();
+            playerEsq.Winner();
+            playerDir.Loser();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            WinningRight();
+            // WinningRight();
+            playerDir.Winning();
+            playerEsq.Losing();
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            WinRight();
+            // WinRight();
+            playerDir.Win();
+            playerEsq.Lose();
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            WinnerRight();
+            // WinnerRight();
+            playerDir.Winner();
+            playerEsq.Loser();
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
@@ -82,7 +94,8 @@ public class CharacterManagerReal : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            Recover();
+            playerEsq.Recover(spawnEsquerda);
+            playerDir.Recover(spawnDireita);
         }
     }
 
@@ -92,14 +105,15 @@ public class CharacterManagerReal : MonoBehaviour
             persEsquerda = Instantiate(persEsquerdaPrefab);
             playerEsq = persEsquerda.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persEsquerda,ConnectionManagerReal.GetInstance().GetConnection(0));
-            persEsquerda.transform.position = spawnEsquerda;
+            //persEsquerda.transform.position = spawnEsquerda;
 
             persDireita = Instantiate(persDireitaPrefab, spawnDireita, Quaternion.identity);
             playerDir = persDireita.GetComponent<Player>();
             InstanceFinder.ServerManager.Spawn(persDireita,ConnectionManagerReal.GetInstance().GetConnection(1));
-            persDireita.transform.position = spawnDireita;
+            //persDireita.transform.position = spawnDireita;
             
-            Recover();
+            playerEsq.Recover(spawnEsquerda);
+            playerDir.Recover(spawnDireita);
         } else if(InstanceFinder.ServerManager.Clients.Keys.Count < 2){
             print("Algum cliente não está conectado");
         } else {
@@ -108,6 +122,7 @@ public class CharacterManagerReal : MonoBehaviour
 
     }
 
+    /*
     public void WinningLeft(){
         playerEsq.LoadPose("Forte");
         playerEsq.GetComponent<Animator>().SetInteger("Status", 1);
@@ -181,7 +196,7 @@ public class CharacterManagerReal : MonoBehaviour
         playerDir.GetComponent<Animator>().SetInteger("Status", 0);
         playerDir.GetComponentsInChildren<Animator>()[1].SetInteger("Status", 0);
     }
-
+    */
     public static CharacterManagerReal GetInstance(){
         return instance;
     }
