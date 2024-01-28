@@ -112,8 +112,8 @@ public class CharacterManagerReal : MonoBehaviour
             InstanceFinder.ServerManager.Spawn(persDireita,ConnectionManagerReal.GetInstance().GetConnection(1));
             //persDireita.transform.position = spawnDireita;
             
-            playerEsq.RecoverServer(persEsquerda, spawnEsquerda);
-            playerDir.RecoverServer(persDireita, spawnDireita);
+            playerEsq.Recover(persEsquerda, spawnEsquerda);
+            playerDir.Recover(persDireita, spawnDireita);
         } else if(InstanceFinder.ServerManager.Clients.Keys.Count < 2){
             print("Algum cliente não está conectado");
         } else {

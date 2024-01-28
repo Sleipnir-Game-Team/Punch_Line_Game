@@ -86,13 +86,17 @@ public class Player : NetworkBehaviour
         GetComponent<Animator>().SetInteger("Status", 5);
     }
 
+    public void Recover(GameObject pers, Vector3 spawn){
+        RecoverServer(pers, spawn);
+    }
+
     [ServerRpc]
     public void RecoverServer(GameObject pers, Vector3 spawn){
-        Recover(pers, spawn);
+        RecoverClient(pers, spawn);
     }
 
     [ObserversRpc]
-    public void Recover(GameObject pers, Vector3 spawn){
+    public void RecoverClient(GameObject pers, Vector3 spawn){
         print(spawn);
         pers.transform.position = spawn;
         pers.GetComponent<Player>().LoadPose("Carregando");
