@@ -11,11 +11,11 @@ public class Player : NetworkBehaviour
     [SyncVar] [SerializeField] private string pose;
     [SyncVar] [SerializeField] private string character;
 
-    public int life{
+    public int Life{
         get;
 
         [ServerRpc]
-        private set;
+        set;
     }
 
     public override void OnStartClient()
@@ -32,11 +32,15 @@ public class Player : NetworkBehaviour
         if(!IsOwner){
             return;
         }
-
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            Life = 3;
+            print(Life);
+        }
         if(Input.GetKeyDown(KeyCode.R))
         {
-            life -= 1;
-            print(life);
+            Life -= 1;
+            print(Life);
         }
     }
     public string GetPose(){
