@@ -88,6 +88,7 @@ public class Player : NetworkBehaviour
 
     [ObserversRpc]
     public void Recover(Vector3 spawn){
+        print(spawn);
         transform.position = spawn;
         LoadPose("Carregando");
 
